@@ -87,7 +87,7 @@ spa.shell = (function() {
 
       stateMap.is_chat_retracted = true;
       jqueryMap.$chat
-        .attr('title', configMap.chat_retract_title)
+        .attr('title', configMap.chat_retracted_title)
         .click(onClickChat);
     };
 
