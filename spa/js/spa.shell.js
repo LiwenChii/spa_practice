@@ -95,10 +95,10 @@ spa.shell = (function() {
         switch (s_chat_proposed) {
           case 'open':
             toggleChat(true);
-            break;
+          break;
           case 'closed':
             toggleChat(false);
-            break;
+          break;
           default:
             toggleChat(false);
             delete anchor_map_proposed.chat;
@@ -175,7 +175,7 @@ spa.shell = (function() {
       });
 
       $(window)
-        .bind('haschange', onHashchange)
+        .bind('hashchange', onHashchange)
         .trigger('hashchange');
     };
 
