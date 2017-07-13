@@ -41,6 +41,7 @@ spa.shell = (function() {
     };
 
     changeAnchorPart = function(arg_map){
+      console.log("2333", arg_map)
       var
         anchor_map_revise = copyAnchorMap(),
         bool_return = true,
@@ -89,7 +90,8 @@ spa.shell = (function() {
 
       _s_chat_previous = anchor_map_previous._s_chat;
       _s_chat_proposed = anchor_map_proposed._s_chat;
-
+      console.log(anchor_map_previous, anchor_map_proposed, _s_chat_previous, _s_chat_proposed)
+      
       if(!anchor_map_previous || _s_chat_previous !== _s_chat_proposed){
         s_chat_proposed = anchor_map_proposed.chat;
         switch (s_chat_proposed) {
