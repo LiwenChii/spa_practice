@@ -38,3 +38,4 @@ spa.chat = (function () {
 			initModule: initModule
 		};
 }());
+  
