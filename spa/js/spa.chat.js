@@ -3,7 +3,7 @@ spa.chat = (function () {
     configMap = {
       main_html: `
         <div style="padding:1em; color:#fff;">
-          'hello chat'
+          hello chat
         </div>
       `,
       settable_map: {}
