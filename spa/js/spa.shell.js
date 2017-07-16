@@ -183,7 +183,7 @@ spa.shell = (function() {
 
       spa.chat.configModule({
         set_chat_anchor: setChatAnchor,
-        chatModel: spa.model.chat,
+        chat_model: spa.model.chat,
         people_model: spa.model.people
       });
       spa.chat.initModule(jqueryMap.$container);

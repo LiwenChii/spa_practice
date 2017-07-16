@@ -20,6 +20,9 @@ spa.util = (function(){
       config_map = arg_map.config_map,
       key_name, error;
 
+    console.log(input_map)
+    console.log(settable_map)
+    console.log(config_map)
     for(key_name in input_map){
       if(input_map.hasOwnProperty(key_name)){
         if(settable_map.hasOwnProperty(key_name)){
