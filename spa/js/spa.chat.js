@@ -28,7 +28,7 @@ spa.chat = (function () {
         slider_closed_title: true,
 
         chat_model: true,
-        peole_model: true,
+        people_model: true,
         set_chat_anchor: true
       },
       slider_open_time: 250,
@@ -150,7 +150,7 @@ spa.chat = (function () {
       spa.util.setConfigMap({
         input_map: input_map,
         settable_map: configMap.settable_map,
-        configMap: configMap
+        config_map: configMap
       });
       return true;
     }
