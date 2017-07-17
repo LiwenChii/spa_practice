@@ -38,7 +38,7 @@
   width: 2em;
 }
   .spa-chat-closer:hover {
-    background: #888;
+    background: red;
   }
 
 .spa-chat-head-toggle {
