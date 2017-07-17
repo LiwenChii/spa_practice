@@ -23,14 +23,17 @@ spa.shell = (function() {
       chat_extend_height: 450,
       chat_retract_height: 15,
       chat_extend_title: 'Click to retract',
-      chat_retracted_title: 'Click to extend'
+      chat_retracted_title: 'Click to extend',
+      resize_interval: 200
     },
     stateMap = {
-      anchor_map: {}
+      $container: undefined,
+      anchor_map: {},
+      resize_idto: undefined
     },
     jqueryMap = {},
     copyAnchorMap, setJqueryMap, toggleChat,
-    changeAnchorPart, onHashchange,
+    changeAnchorPart, onHashchange, onResize,
     setChatAnchor, initModule;
 
     copyAnchorMap = function(){
@@ -128,49 +131,17 @@ spa.shell = (function() {
       };
     };
 
-    // toggleChat = function (do_extend, callback) {
-    //   var
-    //     px_char_ht = jqueryMap.$chat.height(),
-    //     is_open = px_char_ht === configMap.chat_extend_height,
-    //     is_closed = px_char_ht === configMap.chat_retract_height,
-    //     is_sliding = !is_open && !is_closed;
-
-    //   if(is_sliding){ return false;}
-
-    //   if(do_extend){
-    //     jqueryMap.$chat.animate(
-    //       { height: configMap.chat_extend_height },
-    //       configMap.chat_extend_time,
-    //       function () {
-    //         jqueryMap.$chat.attr(
-    //           'title', configMap.chat_extend_title
-    //         );
-    //         stateMap.is_chat_retracted = false;
-    //         if(callback){ callback(jqueryMap.$chat);}
-    //       }
-    //     );
-    //     return true;
-    //   }
-    //   jqueryMap.$chat.animate(
-    //     { height: configMap.chat_retract_height },
-    //     configMap.chat_retract_time,
-    //     function () {
-    //       jqueryMap.$chat.attr(
-    //         'title', configMap.chat_retracted_title
-    //       );
-    //       stateMap.is_chat_retracted = true;
-    //       if(callback){ callback( jqueryMap.$chat ); }
-    //     }
-    //   );
-    //   return true;
-    // };
-
-    // onClickChat = function (event) {
-    //   changeAnchorPart({
-    //     chat: (stateMap.is_chat_retracted? 'open': 'closed')
-    //   });
-    //   return false;
-    // }
+    onResize = function() {
+      if(stateMap.resize_idto){
+        return true;
+      }
+      spa.chat.handleResize();
+      stateMap.resize_idto = setTimeout(
+        function(){stateMap.resize_idto = undefined;},
+        configMap.resize_interval
+      );
+      return true;
+    };
 
     initModule = function( $container ){
       stateMap.$container = $container;
@@ -189,6 +160,7 @@ spa.shell = (function() {
       spa.chat.initModule(jqueryMap.$container);
 
       $(window)
+        .bind('resize', onResize)
         .bind('hashchange', onHashchange)
         .trigger('hashchange');
     };
